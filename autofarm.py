@@ -8,15 +8,18 @@ running = False
 def spam_actions():
     global running
     while running:
+        start_time = time.time()
+        
         # Press space
         pydirectinput.press('space')
         
-        # Wait 0.3 seconds, then click
+        # Wait so it dont fuck up
         time.sleep(0.1)
         pydirectinput.click()
         
-        # Wait remaining time (1.7 total loop)
-        time.sleep(2)
+        # Wait so shit dont go kabloom
+        elapsed = time.time() - start_time
+        time.sleep(max(0, 3 - elapsed + 0.5))
 
 def toggle():
     global running
